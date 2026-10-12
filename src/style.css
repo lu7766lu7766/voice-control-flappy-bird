@@ -1,0 +1,96 @@
+:root {
+  --bg-1: #0d2a33;
+  --bg-2: #04090c;
+  --accent: #f8c630;
+  --text: #cfe7ea;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 30%, var(--bg-1) 0%, var(--bg-2) 75%);
+  color: var(--text);
+  font-family: 'Segoe UI', 'Noto Sans TC', system-ui, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+#game {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  touch-action: none;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.06),
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 80px rgba(78, 192, 202, 0.18);
+  animation: rise 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+.hint {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+
+.hint .dot {
+  margin: 0 6px;
+  opacity: 0.5;
+}
+
+kbd {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom-width: 2px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+
+@media (max-width: 520px), (max-height: 520px) {
+  .hint {
+    display: none;
+  }
+  #game {
+    border-radius: 0;
+  }
+}
